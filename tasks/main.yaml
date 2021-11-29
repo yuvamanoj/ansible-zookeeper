@@ -52,7 +52,7 @@
 
 - name: Unpack Apache ZooKeeper
   unarchive:
-    src: apache-zookeeper-3.7.0-bin.tar.gz
+    src: /etc/ansible/roles/ansible-zookeeper/files/apache-zookeeper-3.7.0-bin.tar.gz
     dest: "{{ zookeeper_install_dir }}"
     copy: no
     extra_opts: [--strip-components=1]
