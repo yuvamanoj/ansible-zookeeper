@@ -29,7 +29,7 @@
 - name: Check if ZooKeeper has already been downloaded and unpacked
   stat:
     path: "{{ zookeeper_install_dir }}"
-  register: dir
+#  register: dir
 
 #- name: Download Apache ZooKeeper
 #  get_url:
@@ -46,7 +46,7 @@
     group: "{{ zookeeper_group }}"
     owner: "{{ zookeeper_user }}"
     mode: 0755
-  when: not dir.stat.exists
+#  when: not dir.stat.exists
   tags:
     - zookeeper_dirs
 
@@ -58,7 +58,7 @@
     extra_opts: [--strip-components=1]
     group: "{{ zookeeper_group }}"
     owner: "{{ zookeeper_user }}"
-  when: not dir.stat.exists
+#  when: not dir.stat.exists
   tags:
     - zookeeper_unpack
 
