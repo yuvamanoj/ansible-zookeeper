@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Simon Leigh
+  author: Manoj R
   description: Apache ZooKeeper installation for RHEL/CentOS and Debian/Ubuntu
   license: MIT
   min_ansible_version: 2.10.4

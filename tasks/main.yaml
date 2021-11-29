@@ -31,13 +31,13 @@
     path: "{{ zookeeper_install_dir }}"
   register: dir
 
-- name: Download Apache ZooKeeper
-  get_url:
-    url: "{{ zookeeper_mirror }}/zookeeper-{{ zookeeper_version }}/{{ zookeeper_package }}"
-    dest: /tmp
-  when: not dir.stat.exists
-  tags:
-    - zookeeper_download
+#- name: Download Apache ZooKeeper
+#  get_url:
+#    url: "{{ zookeeper_mirror }}/zookeeper-{{ zookeeper_version }}/{{ zookeeper_package }}"
+#    dest: /tmp
+#  when: not dir.stat.exists
+#  tags:
+#    - zookeeper_download
 
 - name: Create ZooKeeper installation dir {{ zookeeper_install_dir }}
   file:
@@ -52,7 +52,7 @@
 
 - name: Unpack Apache ZooKeeper
   unarchive:
-    src: /tmp/{{ zookeeper_package }}
+    src: apache-zookeeper-3.7.0-bin.tar.gz
     dest: "{{ zookeeper_install_dir }}"
     copy: no
     extra_opts: [--strip-components=1]
@@ -190,12 +190,12 @@
     - zookeeper_service
 
 # Cleanup install by deleting downloaded ZooKeeper archive
-- name: Delete /tmp/{{ zookeeper_package }} file
-  file:
-    path: /tmp/{{ zookeeper_package }}
-    state: absent
-  tags:
-    - zookeeper_cleanup
+#- name: Delete /tmp/{{ zookeeper_package }} file
+#  file:
+#    path: /tmp/{{ zookeeper_package }}
+#    state: absent
+#  tags:
+#    - zookeeper_cleanup
 
 # Set Ansible fact that ZooKeeper has completed installation. This is so that this role can be used in
 # other dependent roles. Those roles can check for this fact to determine whether or not this role
